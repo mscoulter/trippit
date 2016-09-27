@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  <link rel="stylesheet" href="05-syle.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']">
+    <ul>
+      <li ng-repeat='name in names'>
+        {{name}}
+       </li>
+    </ul>
+
+    <div ng-init="symbols=['&#9824;', '&#9827;', '&#9829;', '&#9830;']">
+      <ul>
+        <li ng-repeat = 'suit in symbols'> {{ suit }} </li>
+      </ul>
+    </div>
+
+    <div ng-init="arr=[1,1,2,5,6,9,9,9]">
+      <ul>
+        <li ng-repeat="numbs in arr track by $index"> {{ numbs }} </li>
+      </ul>
+    </div>
+
+    <div ng-controller="MainController">
+      <ul>
+        <li ng-repeat="attr in obj"> {{ attr }} </li>
+      </ul>
+
+      <h1>Sign Up Page</h1>
+      <input type="password" value="" ng-model="pass" ng-class='{invalid: pass.length<6, valid:pass.length>5}' ng-keyup="increment()">
+      <p ng-class='{invalid: pass.length<6, valid:pass.length>5}'> Your password is {{ pass.length }} character(s) long </p>
+      <p ng-show="tooShort">Password is too short!</p>
+      <input type="submit" value="submit" ng-hide="tooShort">
+    </div>
+
+    <div ng-controller="CameraController">
+      <h1> Camera Shop </h1>
+      <select ng-model="filter">
+        <option>rating</option>
+        <option>price</option>
+      </select>
+      <div ng-repeat="cam in items">
+      <h3>{{cam.title}}</h3>
+      <p ng-class='{sale:cam.onSale}'>{{cam.price | currency}}</p><p ng-show={{cam.onSale}} ng-class='{sale:cam.onSale}'>ON SALE!</p>
+      <p>{{cam.rating}}</p>
+      <img ng-src="{{cam.image}}">
+      </div>
+
+    </div>
+
+
+
+
+  </body>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="05-script.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>Dropdowns</title>
+  </head>
+  <body>
+      <select ng-model="animal">
+        <option value="">Select an Animal</option>
+        <option value="dogs">Dogs</option>
+        <option value="cats">Cats</option>
+        <option value="dogs and cats">Dogs and Cats</option>
+        <option value="neither">Neither</option>
+      </select>
+      <h1>I love: {{animal}}</h1>
+      {{3.14159265359 | currency : "€"}} <br><br>
+
+      <input type="text" placeholder="Enter phrase here." ng-model="sentence">
+      whisper
+      <h3>{{sentence | lowercase}}</h3>
+      <h3>{{sentence | uppercase}}</h3><br><br>
+      How many digits of pi do you want?
+      <select ng-model="digits">
+        <option value="">Select a number</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      <p>Here you go! The first {{digits}} digit(s) of pi:</p><br>
+      <h3>{{3.14159265359 | number: digits }}</h3>
+
+      <h1>Super Useful Tip Calculator</h1>
+      Meal cost: <input type="number" name="cost" ng-model="meal">
+      How much shall you tip?
+      <select ng-model="tip">
+        <option value="">Select a tip amount</option>
+        <option value=".1">10%</option>
+        <option value=".15">15%</option>
+        <option value=".2">20%</option>
+      </select><br>
+       <h3>subtotal: {{ meal | currency }}</h3>
+       <h3>tip: {{meal * tip | currency}}
+
+      <div>{{ this }}</div>
+
+      Boy's Name<br>
+      <input type="text" placeholder="Enter a boy's name" ng-model="boy"><br>
+      Adjective<br>
+      <input type="text" placeholder="Enter an adjective" ng-model="adj"><br>
+      Plural Noun<br>
+      <input type="text" placeholder="Enter a plural noun" ng-model="n1"><br>
+      Plural Noun<br>
+      <input type="text" placeholder="Enter a plural noun" ng-model="n2"><br>
+      An Insect, plural<br>
+      <input type="text" placeholder="Enter an insect, plural" ng-model="insect"><br>
+      Plural Noun<br>
+      <input type="text" placeholder="Enter a plural noun" ng-model="p3"><br>
+      Verb ending in "s"<br>
+      <input type="text" placeholder="Enter a verb ending in 's'" ng-model="verb"><br>
+
+      <h1>Mad with the Libs</h1>
+
+      <h3>I'm in love with {{ boy | uppercase }}. He's so {{ adj | uppercase }}! He has big flat {{ n1 | uppercase }}, and when our {{ n2 | uppercase }} meet, I get {{ insect | uppercase }} in my stomach. I've fallen for him a ton of {{ p3 | uppercase }}, and he {{ verb | uppercase }} me, too. But I think he's got another girlfriend. What should I do?</h3>
+
+
+
+  </body>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+</html>

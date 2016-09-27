@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="ex8">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="08-style.css" media="screen" title="no title" charset="utf-8">
+    </script>
+  </head>
+  <body ng-controller="ControllerOne">
+    <div class="ControllerOne">
+      <h3>The number is: {{view.number}}</h3>
+      <button ng-click="pickRandomNumber()">Pick Random Number</button>
+    </div>
+    <div ng-controller="Reverse">
+      <h1>Word Reverser</h1>
+      <input type="text" ng-model="view.word">
+      <p> Your word is {{view.word}} </p>
+      <input type="button" name="name" value="Reverse It!" ng-click="click()">
+    </div>
+
+    <div class="container" ng-controller="pong">
+      <div class="left" ng-click="add1()">
+        <h1>Player 1</h1>
+        <h1>{{view.p1}}</h1>
+        <h3 ng-show="serve()">Serving</h3>
+      </div>
+      <div class="right" ng-click="add2()">
+        <h1>Player 2</h1>
+        <h1>{{view.p2}}</h1>
+        <h3 ng-hide="serve()">Serving</h3>
+      </div>
+    </div>
+    <div ng-controller="count">
+      <h3>The div was entered {{view.enterCount}} times</h3>
+      <div class="divbox" ng-mouseenter="view.enterCount = view.enterCount + 1"></div>
+    </div>
+
+    <div ng-controller="ColorBox">
+      <h3>Random Color Box!!!</h3>
+      <div class="colorbox" ng-style="x" ng-mouseenter="x={'background-color' : randomColor()}"></div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="08-script.js"></script>
+</html>

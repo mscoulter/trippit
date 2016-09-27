@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app='reddit-clone'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="11-style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body ng-controller="FirstController">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Reddit Clone</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="#" <span class="glyphicon glyphicon-plus" ng-click="addPost()"></span>Submit Post</a></li>
+          <li class="navbar-form">
+            <div class="form-inline" >
+              <input type="text" placeholder="search" class="form-control" ng-model="view.searchAll">
+            </div>
+          </li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Order by <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="item in view.sortby"><a href="#" ng-click="sortPosts(item)">{{item}}</a></li>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+      <form name= "formName" role="form" ng-show="view.seeform" ng-submit="addData(newData)" class = "newPostForm">
+        <div class="post-form">
+          <label for="title-input">Title</label>
+          <input type="text" class="form-control" id="title-input" ng-model="newData.title">
+        </div>
+        <div class="post-form">
+          <label for="author-input">Author</label>
+          <input type="text" class="form-control" id="author-input" ng-model="newData.author">
+        </div>
+        <div class="post-form">
+          <label for="image-input">Image URL</label>
+          <input type="text" class="form-control" id="image-input" ng-model="newData.image">
+        </div>
+        <div class="post-form">
+          <label for="desc-input">Description</label>
+          <input type="text" class="form-control" id="desc-input" ng-model="newData.description">
+        </div>
+        <button type="submit" class="btn btn-default">Submit Post</button>
+      </form>
+    <div class="container">
+      <div class = "allposts" ng-repeat="post in view.posts | filter:view.searchAll | orderBy: view.order" >
+        <div class="row">
+          <div class="col-md-2"><img ng-src="{{post.image}}"></div>
+          <div class="col-md-10">
+            <h4>
+              {{ post.title }} |
+              <span class="glyphicon glyphicon-arrow-up" ng-click="vote(post, 1)"></span>
+              <span class="glyphicon glyphicon-arrow-down" ng-click="vote(post, -1)"></span>
+              <span ng-class="ratingColor(post)">{{ post.votes }}</span>
+            </h4>
+            <p class="pull-right">By {{ post.author }}</p>
+            <p>{{ post.description }}</p>
+            <p>
+              <span class="glyphicon glyphicon-calendar"></span>
+              {{ post.date }} |
+              <span class="hoverable" ng-click="toggleComments(post)">
+                <span class="glyphicon glyphicon-comment"></span>
+                <ng-pluralize count="post.comments.length" when="{1: '1 comment', 'other': '{{ post.comments.length }} comments'}"></ng-pluralize>
+              </span> |
+              <span class="hoverable" ng-click="toggleNewComment(post)">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Add comment
+              </span>
+            </p>
+
+            <div class="comments" ng-show="post.showComments">
+              <p ng-repeat="comment in post.comments">
+                <strong>{{ comment.author }}</strong> - {{ comment.text }}
+              </p>
+            </div>
+            <div class="comment" ng-show="post.showNewComment">
+              <form class="form-inline" ng-submit="addComment(post, newComment)">
+                <div class="form-group">
+                  <label for="author">Author</label>
+                  <input type="text" placeholder="author" class="form-control" ng-model="newComment.author">
+                </div>
+                <div class="form-group">
+                  <label for="text">Text</label>
+                  <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">
+                </div>
+                <input class="btn btn-success" type="submit" value="Add Comment">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script  type="text/javascript" src="11-script.js"></script>
+  </body>
+</html>

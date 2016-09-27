@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller="MyFirstController">
+      <h1>My name is: {{name}}</h1>
+      <input ng-model="name" type="text" placeholder="What is your name">
+    </div>
+    <div ng-controller="ExercisesController">
+      <h1>My favorite color is: {{FavColor}}</h1>
+      <h3>There are {{secondsInCentury | number}} seconds in a century!</h3>
+      <h3>{{rightNow | date : 'EEEE, MMMM d, y'}}</h3>
+    </div>
+    <div ng-controller="MadLibController">
+      Boy's Name<br>
+      <input type="text" placeholder="Enter a boy's name" ng-model="mad.boy"><br>
+      Adjective<br>
+      <input type="text" placeholder="Enter an adjective" ng-model="mad.adj"><br>
+      Plural Noun<br>
+      <input type="text" placeholder="Enter a plural noun" ng-model="mad.n1"><br>
+      Plural Noun<br>
+      <input type="text" placeholder="Enter a plural noun" ng-model="mad.n2"><br>
+      An Insect, plural<br>
+      <input type="text" placeholder="Enter an insect, plural" ng-model="mad.insect"><br>
+      Plural Noun<br>
+      <input type="text" placeholder="Enter a plural noun" ng-model="mad.p3"><br>
+      Verb ending in "s"<br>
+      <input type="text" placeholder="Enter a verb ending in 's'" ng-model="mad.verb"><br>
+      <input type="button" name="name" value="Generate!" ng-click="click()">
+
+      <h1>Mad with the Libs</h1>
+      <div ng-show="toggle">
+        <h3>I'm in love with {{ mad.boy | uppercase }}. He's so {{ mad.adj | uppercase }}! He has big flat {{ mad.n1 | uppercase }}, and when our {{ mad.n2 | uppercase }} meet, I get {{ mad.insect | uppercase }} in my stomach. I've fallen for him a ton of {{ mad.p3 | uppercase }}, and he {{ mad.verb | uppercase }} me, too. But I think he's got another girlfriend. What should I do?</h3>
+        <input type="button" name="name" value="Play Again?" ng-click="clear()">
+      </div>
+    </div>
+
+
+  </body>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="06-script.js" type="text/javascript"></script>
+</html>
