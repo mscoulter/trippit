@@ -13,3 +13,6 @@ img {
 .hoverable:hover{
   cursor: pointer;
 }
+.row{
+  margin: 3vw;
+}
