@@ -13,7 +13,7 @@ app.controller('FirstController', function($scope){
   $scope.view.posts =[
       {
         title: "Glissading for the win!",
-        author: "Michael Coulter",
+        author: "Soren Kierkegaard",
         image: "http://www.hikingintherockies.com/fourteeners/snowcap/snowmass_capitol_017.jpg",
         description: "Give yourself 2 nights to truly enjoy this trip!",
         date: moment().subtract(2, 'days').subtract(3, 'hours').calendar(),
@@ -28,7 +28,7 @@ app.controller('FirstController', function($scope){
         showNewComment: false
       }, {
         title: "Crestones Traverse",
-        author: "Michael Coulter",
+        author: "Karl Marx",
         image: "https://www.rmfi.org/sites/default/files/styles/media_gallery_large/public/IMG_1720.jpg?itok=f7QCV0tX",
         description: "Big time exposure with no ropes",
         date: moment().subtract(2, 'days').subtract(3, 'hours').calendar(),

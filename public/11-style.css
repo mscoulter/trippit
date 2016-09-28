@@ -16,3 +16,6 @@ img {
 .row{
   margin: 3vw;
 }
+.pull-right{
+  margin-left: 3vw;
+}
